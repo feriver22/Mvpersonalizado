@@ -1,0 +1,34 @@
+<?php
+
+use Utilities\Context;
+use Utilities\Site;
+
+require __DIR__ . '/autoload.php';
+session_start();
+
+try {
+    Site::configure();
+    $pageRequest = Site::getPageRequest();
+    $instance = new $pageRequest();
+    $instance->run();
+    die();
+} catch (\Controllers\PrivateNoAuthException $ex) {
+    $instance = new \Controllers\NoAuth();
+    $instance->run();
+    die();
+} catch (\Controllers\PrivateNoLoggedException $ex) {
+    $redirTo = urlencode(Context::getContextByKey("request_uri"));
+    Site::redirectTo("index.php?page=Sec_Login&redirto=" . $redirTo);
+    die();
+} catch (Exception $ex) {
+    Site::logError($ex, 500);
+    $instance = new \Controllers\Error();
+    $instance->run();
+    die();
+} catch (Error $ex) {
+    Site::logError($ex, 500);
+    $instance = new \Controllers\Error();
+    $instance->run();
+    die();
+}
+?>

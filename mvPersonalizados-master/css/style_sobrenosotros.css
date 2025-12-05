@@ -1,0 +1,168 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #fff0f5;
+    color: #333;
+}
+
+
+header {
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+header .logo {
+    display: flex;
+    align-items: center;
+}
+
+header .logo-img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ffd6e8; 
+}
+
+
+main {
+    padding: 20px;
+}
+
+
+.SNosotros {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.SNosotros h2 {
+    font-size: 24px;
+    color: #ff61a6; 
+    margin-bottom: 10px;
+}
+
+.SNosotros p, .SNosotros ul {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.SNosotros ul {
+    padding-left: 20px;
+}
+
+.SNosotros ul li {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+
+.Misiontxt, .Visointxt, .Valorestxt {
+    margin-bottom: 30px;
+}
+
+
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .SNosotros {
+        padding: 15px;
+    }
+
+    .SNosotros h2 {
+        font-size: 20px;
+    }
+
+    .SNosotros p, .SNosotros ul {
+        font-size: 16px;
+    }
+}
+
+/* Footer styles */
+footer {
+    background-color: #f4f4f4; 
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid #ddd;
+    font-family: Arial, sans-serif;
+}
+
+footer .contacto {
+    margin-bottom: 15px;
+}
+
+footer .contacto a {
+    margin: 0 10px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+footer .contacto img {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s ease;
+}
+
+footer .contacto img:hover {
+    transform: scale(1.1); 
+}
+
+footer .pfreq {
+    margin-top: 10px;
+}
+
+footer .pfreq a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+footer .pfreq a:hover {
+    color: #007BFF; 
+}

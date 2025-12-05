@@ -1,0 +1,41 @@
+# Composer
+vendor/
+composer.lock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+error_log
+*.log
+
+# Temp
+*.tmp
+temp/
+tmp/
+
+# Upload (si se agrega)
+uploads/
+img/upload/
+
+# Configuración local
+parameters.local.env
+
+# PHP
+.php_cs
+.php_cs.cache
+
+# Session
+sessions/
+
+# Cache
+cache/
+
+# Bower
+bower_components/
+node_modules/

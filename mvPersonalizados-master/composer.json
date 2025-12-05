@@ -1,0 +1,8 @@
+{
+    "name": "mvpersonalizados/ecommerce",
+    "description": "MVPersonalizados - E-commerce de regalos personalizados",
+    "type": "project",
+    "autoload": {
+      "psr-4": {"":"src/"}
+    }
+}

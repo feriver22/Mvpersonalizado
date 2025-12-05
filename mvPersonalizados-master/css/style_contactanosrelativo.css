@@ -1,0 +1,241 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #fff0f5;
+    color: #333;
+  }
+  
+  /* Barra de navegación */
+  header {
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  
+  header .logo {
+    display: flex;
+    align-items: center;
+}
+
+header .logo-img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  nav ul li a:hover {
+    color: #ffd6e8;
+  }
+  
+  /* Carrusel */
+  
+  .carrusel {
+    position: relative;
+    width: 100%;
+    height: 60vh; 
+    overflow: hidden;
+    margin-bottom: 40px;
+  }
+  
+  .imagenes-carrusel {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+  
+  .imagen-carrusel {
+    width: 100%;
+    height: 100%; 
+    object-fit: cover; 
+  }
+  
+  .botones-carrusel {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+  }
+  
+  .boton-carrusel {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .boton-carrusel:hover {
+    background-color: #ffd700;
+  }
+  
+  
+  /* Hero section */
+  /* Hero section */
+  .hero {
+    background-color: #f5f5dc;
+    height: 35vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: center;
+    padding: 5rem 2rem;
+  }
+  
+  .hero-content {
+    max-width: 600px;
+    text-align: justify; 
+    margin-top: 1rem; 
+  }
+  
+  .hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #FFD700;
+  }
+  
+  .hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem; 
+    line-height: 1.6; 
+  }
+  
+  /* Botón */
+  .btn {
+    margin-top: 1.5rem; 
+    background-color: #FFD700;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: background 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #cce383;
+  }
+  
+  
+  form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  form input, form textarea, form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  form button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  form button:hover {
+    background-color: #45a049;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-img {
+    width: 40px;
+    height: auto;
+    margin-right: 10px; 
+  }
+  
+  /* Footer styles */
+  footer {
+    background-color: #f4f4f4; 
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid #ddd;
+    font-family: Arial, sans-serif;
+  }
+  
+  footer .contacto {
+    margin-bottom: 15px;
+  }
+  
+  footer .contacto a {
+    margin: 0 10px;
+    display: inline-block;
+    text-decoration: none;
+  }
+  
+  footer .contacto img {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s ease;
+  }
+  
+  footer .contacto img:hover {
+    transform: scale(1.1); 
+  }
+  
+  footer .pfreq {
+    margin-top: 10px;
+  }
+  
+  footer .pfreq a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  footer .pfreq a:hover {
+    color: #007BFF; 
+  }
+  
