@@ -98,26 +98,47 @@ class Renderer
 
     protected static function _renderTemplate($template_code, $datos)
     {
-        $template_code = self::_renderVariables($template_code, $datos);
-        $template_code = self::_renderConditionals($template_code, $datos);
         $template_code = self::_renderLoops($template_code, $datos);
+        $template_code = self::_renderConditionals($template_code, $datos);
+        $template_code = self::_renderVariables($template_code, $datos);
         return $template_code;
     }
 
     protected static function _renderVariables($template, $datos)
     {
-        $pattern = '/\{\{(\$?[a-zA-Z_][a-zA-Z0-9_]*(?:\-\>[a-zA-Z_][a-zA-Z0-9_]*)*)\}\}/';
-        $template = preg_replace_callback($pattern, function ($matches) use ($datos) {
-            $var = trim($matches[1]);
-            if (isset($datos[$var])) {
-                $value = $datos[$var];
-                if (is_array($value) || is_object($value)) {
-                    return json_encode($value);
+        // Primera pasada: Variables con propiedades $var->prop
+        $template = preg_replace_callback('/\{\{\s*\$([a-zA-Z_][a-zA-Z0-9_]*)\s*->\s*([a-zA-Z_][a-zA-Z0-9_]*)\s*\}\}/', 
+            function($m) use ($datos) {
+                $varName = $m[1];
+                $propName = $m[2];
+                if (isset($datos[$varName]) && is_object($datos[$varName])) {
+                    $obj = $datos[$varName];
+                    if (isset($obj->$propName)) {
+                        return $obj->$propName;
+                    }
                 }
-                return $value;
-            }
-            return "";
-        }, $template);
+                return '';
+            },
+            $template
+        );
+        
+        // Segunda pasada: Variables simples {{var}}
+        $template = preg_replace_callback('/\{\{\s*([a-zA-Z_][a-zA-Z0-9_]*)\s*\}\}/', 
+            function($m) use ($datos) {
+                $varName = $m[1];
+                if (isset($datos[$varName])) {
+                    $val = $datos[$varName];
+                    if (is_scalar($val)) {
+                        return $val;
+                    } elseif (is_array($val) || is_object($val)) {
+                        return json_encode($val);
+                    }
+                }
+                return '';
+            },
+            $template
+        );
+        
         return $template;
     }
 
@@ -151,7 +172,17 @@ class Renderer
             $array = $datos[$array_name];
             if (is_array($array) || ($array instanceof \Iterator)) {
                 foreach ($array as $item) {
-                    $item_datos = array_merge($datos, array($item_name => $item));
+                    // Copiar todos los datos y agregar el item actual
+                    $item_datos = $datos;
+                    $item_datos[$item_name] = $item;
+                    
+                    // Si el item es un objeto, agregar sus propiedades como variables
+                    if (is_object($item)) {
+                        foreach (get_object_vars($item) as $prop => $value) {
+                            $item_datos[$prop] = $value;
+                        }
+                    }
+                    
                     $rendered = self::_renderVariables($content, $item_datos);
                     $rendered = self::_renderConditionals($rendered, $item_datos);
                     $output .= $rendered;
